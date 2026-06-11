@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: pancasila-website
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: LOG_CHANNEL
+        value: stderr
+      - fromGroup: pancasila-website-secrets
+
+  - type: worker
+    name: pancasila-worker
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./
+    autoDeploy: true
+    command: php artisan queue:work --tries=3
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - fromGroup: pancasila-website-secrets
