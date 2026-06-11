@@ -40,6 +40,9 @@
         <form id="quizForm" action="{{ route('quiz.submit') }}" method="POST" class="space-y-10">
             @csrf
 
+            <p>Jumlah kelompok sila: {{ $groupedQuestions->count() }}</p>
+            <p>Total questions: {{ \App\Models\Question::count() }}</p>
+
             @foreach($groupedQuestions as $silaNumber => $questions)
                 <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
                     <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
