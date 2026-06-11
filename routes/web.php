@@ -28,5 +28,11 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::put('/reflections/{reflection}/approve', [PancasilaAdminController::class, 'approveReflection'])->name('reflections.approve');
     Route::delete('/reflections/{reflection}', [PancasilaAdminController::class, 'deleteReflection'])->name('reflections.delete');
 });
+Route::get('/seed-test', function () {
+    \Artisan::call('db:seed', ['--force' => true]);
 
+    return [
+        'questions' => \App\Models\Question::count(),
+    ];
+});
 require __DIR__.'/auth.php';
