@@ -36,12 +36,9 @@
             <h2 class="text-3xl font-bold text-gray-800 mb-2">Tes Penerapan Nilai Pancasila</h2>
             <p class="text-gray-600">Jawablah pertanyaan berikut dengan jujur sesuai dengan kehidupan sehari-hari Anda.</p>
         </div>
-
+        
         <form id="quizForm" action="{{ route('quiz.submit') }}" method="POST" class="space-y-10">
             @csrf
-
-            <p>Jumlah kelompok sila: {{ $groupedQuestions->count() }}</p>
-            <p>Total questions: {{ \App\Models\Question::count() }}</p>
 
             @foreach($groupedQuestions as $silaNumber => $questions)
                 <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
