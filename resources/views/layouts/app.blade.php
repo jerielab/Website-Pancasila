@@ -8,14 +8,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Custom Styles -->
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
         .btn-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -32,7 +34,7 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased">
     <div class="min-h-screen">
         @include('layouts.navigation')
 
